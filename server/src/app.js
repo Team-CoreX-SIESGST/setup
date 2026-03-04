@@ -3,12 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoute  from "./controllers/user/userRoutes.js";
 import { verifyJWT } from "./middlewares/auth.middleware.js";
-// import settingsRoute from "./controllers/settings/settingsRoute.js"
 import notificationRoute from "./controllers/notifications/notificationRoutes.js"
-import stationRoutes from "./controllers/station/stationRoutes.js";
-import trainRoutes from "./controllers/train/trainRoutes.js";
-import mobileRoutes from "./controllers/mobile/mobileRoutes.js";
-import queryRoutes from "./controllers/query/queryRoute.js";
 import chatRoutes from "./controllers/chat/chatRoute.js";
 
 const app = express();
@@ -32,14 +27,8 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 app.use("/api/auth", userRoute);
-// app.use("/api/users", settingsRoute);
-app.use("/api/stations", stationRoutes);
-app.use("/api/trains", trainRoutes);
 app.use(verifyJWT);
 app.use("/api/notifications", notificationRoute);
-app.use("/api/trains", trainRoutes);
-app.use("/api/mobile", mobileRoutes);
-app.use("/api/queries", queryRoutes);
 app.use("/api/chat", chatRoutes);
 
 // backend route for OAuth callback
